@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_marginEnd="@dimen/margin_medium">
+
+    <ImageView
+        android:id="@+id/iv_collapse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/photo1"
+       />
+    <TextView
+        android:id="@+id/tv_collapse_title"
+        style="@style/WhiteTextHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="@dimen/margin_medium_4"
+        android:layout_marginBottom="@dimen/margin_xxlarge"
+        android:text="The Wolverine 2013." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Official Review."
+        style="@style/WhiteTextHeader"
+        android:layout_margin="@dimen/margin_medium_4"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/margin_medium"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/yellow_play"
+        android:layout_gravity="center" />
+
+
+
+</FrameLayout>

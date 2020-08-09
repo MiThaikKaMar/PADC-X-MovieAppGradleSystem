@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorRootBackground"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/margin_medium_2">
+
+    <ImageView
+        android:id="@+id/iv_discover_img"
+        android:layout_width="150dp"
+        android:layout_height="230dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/photo2"
+        />
+
+    <TextView
+        android:id="@+id/tv_discover_title"
+        style="@style/WhiteTextRegular"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="@dimen/margin_card_medium"
+        android:ellipsize="end"
+        android:text="Inside Out" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_discover_average_rate"
+            style="@style/WhiteTextRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="8,20" />
+
+        <include layout="@layout/five_star" />
+
+    </LinearLayout>
+</LinearLayout>

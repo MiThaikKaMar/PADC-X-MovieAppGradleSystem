@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@color/colorRootBackground"
+            app:layout_collapseMode="pin">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_format_align_left_black_24dp" />
+
+                <TextView
+                    android:id="@+id/tvDiscover"
+                    style="@style/WhiteTextMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Discover" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/ic_search_black_24dp" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorRootBackground"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/rl_collapse"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+            >
+                <com.padcmyanmar.padcx.padc_x_themovieapp_mtkm.views.components.SmartRecyclerView
+                    android:id="@+id/rv_collapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_best_popular"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rl_collapse">
+
+                <TextView
+                    android:id="@+id/tv_best_popular"
+                    style="@style/GrayTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="BEST POPULAR FILMS AND SERIALS" />
+
+                <com.padcmyanmar.padcx.padc_x_themovieapp_mtkm.views.components.SmartRecyclerView
+                    android:id="@+id/rv_best_popular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_best_popular"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:layout_marginTop="@dimen/margin_medium" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rl_check_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_best_popular"
+                android:layout_margin="@dimen/margin_large"
+                android:background="@color/colorCheckMovie">
+
+                <TextView
+                    android:id="@+id/tv_check_movie"
+                    style="@style/WhiteTextSmallHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:layout_marginTop="@dimen/margin_medium_2"
+                    android:text="Check Movie" />
+
+                <TextView
+                    android:id="@+id/tv_showtimes"
+                    style="@style/WhiteTextSmallHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_check_movie"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:text="Showtimes" />
+
+                <TextView
+                    android:id="@+id/tv_see_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_showtimes"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:layout_marginTop="@dimen/margin_xxxlarge"
+                    android:paddingStart="@dimen/margin_small"
+                    android:text="SEE MORE"
+                    android:textColor="@color/colorYellow" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="75dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_see_more"
+                    android:layout_marginStart="@dimen/margin_medium_4"
+                    android:layout_marginBottom="@dimen/margin_medium_2"
+                    android:background="@color/colorYellow" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_showtimes"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@id/tv_showtimes"
+                    android:src="@drawable/ic_location_on_black_24dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_genres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_check_movie"
+                android:layout_marginStart="@dimen/margin_medium_4">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabMode="scrollable" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/tab_layout" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_showcase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_genres"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:background="@color/colorCheckMovie">
+
+                <TextView
+                    android:id="@+id/tv_showcases"
+                    style="@style/GrayTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="SHOWCASES" />
+
+                <TextView
+                    android:id="@+id/tv_more_showcase"
+                    style="@style/WhiteTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:paddingEnd="@dimen/margin_small"
+                    android:text="MORE SHOWCASES" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="135dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_more_showcase"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:background="@color/colorFullWhite" />
+
+                <com.padcmyanmar.padcx.padc_x_themovieapp_mtkm.views.components.SmartRecyclerView
+                    android:id="@+id/rv_showcases"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_showcases"
+                    android:layout_marginTop="@dimen/margin_medium_2" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_best_actor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_showcase"
+                android:background="@color/colorRootBackground">
+
+                <TextView
+                    android:id="@+id/tv_best_actor"
+                    style="@style/GrayTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:text="BEST ACTORS" />
+
+                <TextView
+                    android:id="@+id/tv_more_actor"
+                    style="@style/WhiteTextRegular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:paddingEnd="@dimen/margin_small"
+                    android:text="MORE ACTORS" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="108dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/tv_more_actor"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:background="@color/colorFullWhite" />
+
+                <com.padcmyanmar.padcx.padc_x_themovieapp_mtkm.views.components.SmartRecyclerView
+                    android:id="@+id/rv_best-actor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view3"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium_2" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

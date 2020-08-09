@@ -1,0 +1,155 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'me.moallemi.advanced-build-version'
+
+advancedVersioning {
+    nameOptions {
+        versionMajor 1
+        versionMinor 0
+        versionPatch 0
+    }
+    codeOptions {
+        versionCodeType 'AUTO_INCREMENT_ONE_STEP'
+        dependsOnTasks 'release' // defaultValue
+    }
+    outputOptions {
+        renameOutput true
+        nameFormat 'MovieAppGradle-v ${versionName}'
+    }
+}
+
+def appVersionName = advancedVersioning.versionName
+def appVersionCode = advancedVersioning.versionCode
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
+    defaultConfig {
+        applicationId "com.padcmyanmar.padcx.padc_x_themovieapp_mtkm"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode appVersionCode
+        versionName appVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String','API_KEY',"${credentialData}"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        flavorDimensions "appModule"
+        def BASE_URL_FIELD ="BASE_URL_FIELD"
+        def BASE_DEV_URL = "\"https://api.themoviedb.org/3/\""
+        def BASE_PROD_URL = "\"https://api.themoviedb.org/3/\""
+        def BASE_STAGING_URL ="\"https://api.themoviedb.org/3/\""
+
+        dev {
+            dimension "appModule"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders = [ appName : "@string/app_name_dev"]
+            buildConfigField 'String',BASE_URL_FIELD,BASE_DEV_URL
+        }
+        prod {
+            dimension "appModule"
+            applicationIdSuffix = ".prod"
+            manifestPlaceholders = [ appName : "@string/app_name_prod"]
+            buildConfigField 'String',BASE_URL_FIELD,BASE_PROD_URL
+        }
+        staging {
+            dimension "appModule"
+            applicationIdSuffix = ".staging"
+            manifestPlaceholders = [ appName : "@string/app_name_staging"]
+            buildConfigField 'String',BASE_URL_FIELD,BASE_STAGING_URL
+        }
+    }
+}
+
+dependencies {
+
+    implementation project(":shared")
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation rootProject.ext.libraries.appCompat
+    implementation rootProject.ext.libraries.core
+    implementation rootProject.ext.libraries.constraint
+    implementation rootProject.ext.libraries.material
+    implementation rootProject.ext.libraries.legacy
+    testImplementation rootProject.ext.libraries.testjunit
+    androidTestImplementation rootProject.ext.libraries.androidtestjunit
+    androidTestImplementation rootProject.ext.libraries.espresso
+
+    //Gson
+    implementation rootProject.ext.libraries.gson
+
+    //OkHttp Library
+    implementation rootProject.ext.libraries.okhttp
+
+    //Retrofit Adapter library
+    implementation rootProject.ext.libraries.retrofitadapter
+
+    //Retrofit Library
+    implementation rootProject.ext.libraries.retrofit2
+    implementation rootProject.ext.libraries.retrofitconverter
+
+    //Rxbinding
+    implementation rootProject.ext.libraries.rxbindingcore
+    implementation rootProject.ext.libraries.rxbindingappcompat
+    implementation rootProject.ext.libraries.rxbindingdrawer
+    implementation rootProject.ext.libraries.rxbindingleanback
+    implementation rootProject.ext.libraries.rxbindingrecyclerview
+    implementation rootProject.ext.libraries.rxbindingsliding
+    implementation rootProject.ext.libraries.rxbindingswiperefresh
+    implementation rootProject.ext.libraries.rxbindingviewpager
+    implementation rootProject.ext.libraries.rxbindingviewpager2
+
+// LiveData
+    implementation rootProject.ext.libraries.livedata
+
+// lifecycle components
+    implementation rootProject.ext.libraries.extensions
+    kapt rootProject.ext.libraries.compiler
+
+// Annotation processor
+    kapt rootProject.ext.libraries.lifecyclecompiler
+
+// Room
+    implementation rootProject.ext.libraries.roomruntime
+    kapt rootProject.ext.libraries.roomcompiler
+
+    //Glide
+    implementation rootProject.ext.libraries.glide
+    annotationProcessor rootProject.ext.libraries.glidecompiler
+
+    implementation rootProject.ext.libraries.youtubeplayer
+
+    // Local Unit Tests
+    testImplementation rootProject.ext.libraries.junit
+    testImplementation rootProject.ext.libraries.junitktx
+    testImplementation rootProject.ext.libraries.corektx
+    testImplementation rootProject.ext.libraries.robolectric
+    testImplementation rootProject.ext.libraries.mockk
+    testImplementation rootProject.ext.libraries.mockito
+
+    // Tests that require Android Device
+    androidTestImplementation rootProject.ext.libraries.junitjunit
+    androidTestImplementation rootProject.ext.libraries.espressocore
+    androidTestImplementation rootProject.ext.libraries.rules
+    androidTestImplementation rootProject.ext.libraries.runner
+    androidTestImplementation rootProject.ext.libraries.androidtestcorektx
+    androidTestImplementation rootProject.ext.libraries.androidtestjunitktx
+    androidTestImplementation rootProject.ext.libraries.espressocontrib
+    androidTestImplementation rootProject.ext.libraries.androidmockito
+}
